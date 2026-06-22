@@ -335,7 +335,7 @@ let is_valid_subproduct_tree types_that_are_currently_being_defined td =
         ~ctype:declaration.pld_type
         ~has_skipped:false
         ~ignore_current_type:false
-    | Some _, None, Ptyp_tuple labeled_types when true ->
+    | Some _, None, Ptyp_tuple _ when true ->
       valid_use_of_subproducts
         ~ctype:declaration.pld_type
         ~has_skipped:false

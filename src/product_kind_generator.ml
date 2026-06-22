@@ -498,7 +498,7 @@ let type_id_function_body
       in
       case ~lhs:pattern ~guard:None ~rhs)
   in
-  pexp_function cases
+  pexp_function_cases cases
 ;;
 
 let globalize0_function_body
@@ -532,7 +532,7 @@ let globalize0_function_body
       in
       case ~lhs ~guard:None ~rhs)
   in
-  pexp_function cases
+  pexp_function_cases cases
 ;;
 
 let globalize_packed_function_body_generic
@@ -586,7 +586,7 @@ let globalize_packed_function_body_generic
         in
         Some (case ~lhs ~guard:None ~rhs)))
   in
-  pexp_function cases
+  pexp_function_cases cases
 ;;
 
 let globalize_packed_function_body
@@ -760,7 +760,7 @@ let pack_body_generic
         in
         Some (case ~lhs ~guard:None ~rhs:(Type_kind.exclave_if_local ~loc ~local rhs))))
   in
-  pexp_function cases
+  pexp_function_cases cases
 ;;
 
 let pack_body

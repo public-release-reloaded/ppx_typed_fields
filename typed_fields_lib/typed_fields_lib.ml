@@ -166,7 +166,7 @@ struct
   type (%{each n "'t%i,"} 'r : any) t =
     | T : (%{each n "'t%i,"} %{params n "'t%i"} %{this n "T"}.t) t
 
-  type %{params n "'t%i"} creator = { f : 'a. (%{each n "'t%i,"} 'a) t @ local -> 'a }
+  type %{params n "'t%i"} creator = { f : 'a. (%{each n "'t%i,"} 'a) t -> 'a }
 
   let names = [ "this" ]
   let name _ = "this"
@@ -950,20 +950,20 @@ struct
 
   type ('a : any) t = (%{each n "T%i.t,"} 'a) M.t
   type derived_on = %{params n "T%i.t"} M.derived_on
-  type creator = { f : 'a. 'a t @ local -> 'a }
+  type creator = { f : 'a. 'a t -> 'a }
 
   let create ({ f } : creator) =
     let m_creator_f
-      : type a. (%{each n "T%i.t,"} a) M.t @ local -> a
+      : type a. (%{each n "T%i.t,"} a) M.t -> a
       = fun field -> f field
     in
     let m_creator = { M.f = m_creator_f } in
     M.create m_creator [@nontail]
   ;;
 
-  let create_local ({ f } : creator @ local) = exclave_
+  let create_local ({ f } : creator) = exclave_
     let m_creator_f
-      : type a. (%{each n "T%i.t,"} a) M.t @ local -> a
+      : type a. (%{each n "T%i.t,"} a) M.t -> a
       = fun field -> f field
     in
     let m_creator = { M.f = m_creator_f } in

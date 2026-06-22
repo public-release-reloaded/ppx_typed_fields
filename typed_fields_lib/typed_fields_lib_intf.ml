@@ -41,21 +41,21 @@ open Base
 module type %{this n "S"} = sig @@ portable
   include Typed_common_lib_intf.%{this n "S"}
 
-  type %{params n "'t%i"} creator = { f : 'a. (%{each n "'t%i,"} 'a) t @ local -> 'a }
+  type %{params n "'t%i"} creator = { f : 'a. (%{each n "'t%i,"} 'a) t -> 'a }
 
-  val get : (%{each n "'t%i,"} 'a) t @ local -> %{params n "'t%i"} derived_on -> 'a
+  val get : (%{each n "'t%i,"} 'a) t -> %{params n "'t%i"} derived_on -> 'a
 
   val set
-    :  (%{each n "'t%i,"} 'a) t @ local
+    :  (%{each n "'t%i,"} 'a) t
     -> %{params n "'t%i"} derived_on
     -> 'a
     -> %{params n "'t%i"} derived_on
 
-  val create : %{params n "'t%i"} creator @ local -> %{params n "'t%i"} derived_on
+  val create : %{params n "'t%i"} creator -> %{params n "'t%i"} derived_on
 
   val create_local
-    :  %{params n "'t%i"} creator @ local
-    -> %{params n "'t%i"} derived_on @ local
+    :  %{params n "'t%i"} creator
+    -> %{params n "'t%i"} derived_on
 end
 
     |}]

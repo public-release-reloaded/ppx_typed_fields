@@ -528,7 +528,7 @@ let type_id_function_body ~loc ~elements_to_convert =
       in
       case ~lhs:pattern ~guard:None ~rhs)
   in
-  pexp_function cases
+  pexp_function_cases cases
 ;;
 
 let globalize0_function_body ~loc ~elements_to_convert =
@@ -556,7 +556,7 @@ let globalize0_function_body ~loc ~elements_to_convert =
       in
       case ~lhs ~guard:None ~rhs)
   in
-  pexp_function cases
+  pexp_function_cases cases
 ;;
 
 let globalize_packed_function_body_generic ~loc ~elements_to_convert ~packed_module_name =
@@ -596,7 +596,7 @@ let globalize_packed_function_body_generic ~loc ~elements_to_convert ~packed_mod
       in
       case ~lhs ~guard:None ~rhs)
   in
-  pexp_function cases
+  pexp_function_cases cases
 ;;
 
 let globalize_packed_function_body ~loc ~elements_to_convert =
@@ -751,7 +751,7 @@ let pack_body_generic ~loc ~elements_to_convert ~local ~packed_module_name =
       in
       case ~lhs ~guard:None ~rhs:(Type_kind.exclave_if_local ~loc ~local rhs))
   in
-  pexp_function cases
+  pexp_function_cases cases
 ;;
 
 let pack_body ~loc ~elements_to_convert ~local =
@@ -879,7 +879,7 @@ let which_function_body ~loc ~elements_to_convert ~number_of_params:_ =
       in
       case ~lhs ~guard:None ~rhs)
   in
-  pexp_function cases
+  pexp_function_cases cases
 ;;
 
 (* Disables unused function warning *)

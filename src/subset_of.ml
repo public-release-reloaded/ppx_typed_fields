@@ -25,7 +25,7 @@ let generate_str ~loc ~typ_name ~fields ~params ~super =
        @ [ ptyp_constr (Located.mk (Lident unique_parameter_id)) [] ])
   in
   let function_body =
-    pexp_function
+    pexp_function_cases
       (List.map fields ~f:(fun (label, param) ->
          let constr = label.pld_name.txt |> String.capitalize |> Lident |> Located.mk in
          let pat_payload =

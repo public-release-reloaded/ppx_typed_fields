@@ -32,19 +32,19 @@ module type %{this n "S"} = sig @@ portable
   val names : string list
 
   (** The name of the field, e.g. "rgb" from the example above. *)
-  val name : %{forall_a} (%{each n "'t%i,"} 'a) t @ local -> string
+  val name : %{forall_a} (%{each n "'t%i,"} 'a) t -> string
 
   (** The path of a field, e.g. ["rgb"] from the example above.
       The list will have multiple elements if the field is a subproduct.  *)
-  val path : %{forall_a} (%{each n "'t%i,"} 'a) t @ local -> string list
+  val path : %{forall_a} (%{each n "'t%i,"} 'a) t -> string list
 
   (** Globalize without extra parameters. *)
-  val globalize0 : %{forall_a} (%{each n "'t%i,"} 'a) t @ local -> (%{each n "'t%i,"} 'a) t
+  val globalize0 : %{forall_a} (%{each n "'t%i,"} 'a) t -> (%{each n "'t%i,"} 'a) t
 
-  val __ord : %{forall_a} (%{each n "'t%i,"} 'a) t @ local -> int list
+  val __ord : %{forall_a} (%{each n "'t%i,"} 'a) t -> int list
 
   module Type_ids %{each n "(T%i : T)"} : sig @@ portable
-    val type_id : ('a : any). (%{each n "T%i.t,"} 'a) t @ local -> 'a Type_equal.Id.t
+    val type_id : ('a : any). (%{each n "T%i.t,"} 'a) t -> 'a Type_equal.Id.t
   end
 
   (** Packed is useful for making collections of 'a t's with different 'a's. *)

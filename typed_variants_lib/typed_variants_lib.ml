@@ -160,7 +160,7 @@ struct
 
   let get
       (type %{each n "t%i "} r)
-      (T : (%{each n "t%i,"} r) t @ local)
+      (T : (%{each n "t%i,"} r) t)
       (t : %{params n "t%i"} derived_on)
       : r option
     = Some t
@@ -168,7 +168,7 @@ struct
 
   let create
       (type %{each n "t%i "} r)
-      (T : (%{each n "t%i,"} r) t @ local)
+      (T : (%{each n "t%i,"} r) t)
       (t : r)
       : %{params n "t%i"} derived_on
     = t
